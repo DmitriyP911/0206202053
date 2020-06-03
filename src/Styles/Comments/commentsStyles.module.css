@@ -1,0 +1,109 @@
+.comment {
+    color: black;
+	background:#F2FBFF;
+    -ms-flex-item-align: end;
+        align-self: flex-end;
+    max-width: 720px;
+    word-wrap: break-word;
+    margin-bottom: 12px;
+    line-height: 24px;
+    position:relative;
+    padding:10px 20px;
+    border-radius:2px;
+    border: 1px solid grey;
+}
+
+/* .comment::before {
+    left: 36px;
+    top: -10px;
+    border-right:20px solid #F2FBFF;
+    border-top-right-radius: 45px 24px;
+    border-bottom-left-radius: 30px;
+    -webkit-transform:translate(0, -2px);
+        -ms-transform:translate(0, -2px);
+            transform:translate(0, -2px);
+}
+
+.comment:before, .comment:after {
+    content:"";
+    position:absolute;
+    bottom:-2px;
+    height:20px;
+  }
+
+.comment::after {
+    right:-56px;
+    width:26px;
+    background:white;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 30px;
+    -webkit-transform:translate(-30px, -2px);
+        -ms-transform:translate(-30px, -2px);
+            transform:translate(-30px, -2px);
+} */
+
+.commentTextarea {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    margin: 0 auto;
+    width: 98%;
+    outline: none;
+}
+
+.commentsForm {
+    width: 100%;
+}
+
+.addComment {
+    width: 30%;
+    min-width: 280px;
+    height: 43px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 24px;
+    border-radius: 25px;
+    margin-bottom: 100px;
+    background-color: #FDD639;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.commentsList {
+    width: 100%;
+    padding-left: 0;
+    list-style: none;
+    max-height: 400px;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.commentsDeleteSvg {
+    width: 25px;
+    height: 32px;
+}
+
+.commentsDeleteBtn {
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.commentsListItem {
+    -webkit-box-shadow: 0px 4px 10px rgba(128, 128, 128, 0.1);
+            box-shadow: 0px 4px 10px rgba(128, 128, 128, 0.1);
+}
+
+.commentInfo {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+}
