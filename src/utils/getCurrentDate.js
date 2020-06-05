@@ -1,6 +1,10 @@
+import moment from 'moment';
+
 const getCurrentDate = () => {
-    const date = new Date();
-    return `${date.getFullYear()}-${date.getMonth() > 9 ? `${date.getMonth()}` : `0${date.getMonth()}`}-${date.getDate() > 9 ? `${date.getDate()}` : `0${date.getDate()}`} time: ${date.getHours() > 9 ? `${date.getHours()}` : `0${date.getHours()}`}:${date.getMinutes() > 9 ? `${date.getMinutes()}` : `0${date.getMinutes()}`}:${date.getSeconds() > 9 ? `${date.getSeconds()}` : `0${date.getSeconds()}`}`
+    moment.updateLocale( 'ru', {
+        months: 'Январь_Февраль_Март_Апрель_Май_Июнь_Июль_Август_Сентябрь_Октябрь_Ноябрь_Декабрь'.split( '_' ),
+    } );
+    return moment().format( 'YYYY MMMM DD' )
 }
 
 export default getCurrentDate;

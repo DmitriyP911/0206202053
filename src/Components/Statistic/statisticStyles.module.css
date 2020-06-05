@@ -9,19 +9,29 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    height: 24px;
     padding-left: 30%;
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
-    padding-bottom: 10px;
+    padding-bottom: 3px;
+}
+
+.statItem:nth-last-child(2) {
+    padding-bottom: 16px;
 }
 
 .statBtn {
-    width: 70%;
+    width: 90%;
     text-align: start;
     border: none;
     outline: none;
     cursor: pointer;
+    border-radius: 3px;
+}
+
+.statText {
+    margin: 0;
 }
 
 .statServices {

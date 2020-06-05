@@ -1,43 +1,62 @@
-import React from 'react';
-import Styles from '../../Styles/Statistic/statisticStyles.module.css'
+import React, { Component } from 'react';
+import Styles from './statisticStyles.module.css';
+import StatisticButton from './StatisticButton/StatisticButton';
 
-const Statistic = ( { onChangeStat, tours, reserve, hotels, total } ) => (
-    <div className={Styles.statWrap}>
-        <p className={Styles.statServices}>Услуги</p>
-        <div className={Styles.statItem}>
-            <button className={Styles.statBtn}
-                style={{
-                    background: `linear-gradient(to right, #B1E19B ${( reserve / total ) * 100}%, rgba(255, 255, 255, 0) ${( hotels / total ) * 100}%)`
-                }}
-                onClick={onChangeStat}
-                name="reserve">Ручное бронирование</button>
-            <p>{reserve}</p>
-        </div>
-        <div className={Styles.statItem}>
-            <button className={Styles.statBtn}
-                style={{
-                    background: `linear-gradient(to right, skyblue ${( tours / total ) * 100}%, rgba(255, 255, 255, 0) ${( hotels / total ) * 100}%)`
-                }}
-                onClick={onChangeStat}
-                name="tours">Пакетные туры</button>
-            <p>{tours}</p>
-        </div>
-        <div className={Styles.statItem}>
-            <button className={Styles.statBtn}
-                style={{
-                    background: `linear-gradient(to right, skyblue ${( hotels / total ) * 100}%, rgba(255, 255, 255, 0) ${( hotels / total ) * 100}%)`
-                }}
-                onClick={onChangeStat}
-                name="hotels"
-            >Отели</button>
-            <p>{hotels}</p>
-        </div>
-        <div className={Styles.statTotal}>
-            <p>Всего: </p>
-            <p>{total}</p>
-        </div>
-    </div >
-)
+class Statistic extends Component {
+    state = {
+        reserve: 0,
+        tours: 0,
+        hotels: 0,
+        total: 0,
+    }
 
+    handleChangeStat = ( e ) => {
+        const { name } = e.target;
+        const { hotels, tours, reserve } = this.state;
+        this.setState( prevState => {
+            return {
+                [name]: prevState[name] + 1,
+                total: hotels + tours + reserve + 1
+            }
+        } )
+    }
+
+    render () {
+        const { total } = this.state;
+        return (
+            <div className={Styles.statWrap}>
+                <p className={Styles.statServices}>Услуги</p>
+                <StatisticButton
+                    color={'#B1E19B'}
+                    itemName={'Ручное бронирование'}
+                    componentName={'reserve'}
+                    statisticItem={this.state.reserve}
+                    total={this.state.total}
+                    changeStat={this.handleChangeStat}
+                />
+                <StatisticButton
+                    color={'skyblue'}
+                    itemName={'Пакетные туры'}
+                    componentName={'tours'}
+                    statisticItem={this.state.tours}
+                    total={this.state.total}
+                    changeStat={this.handleChangeStat}
+                />
+                <StatisticButton
+                    color={'skyblue'}
+                    itemName={'Отели'}
+                    componentName={'hotels'}
+                    statisticItem={this.state.hotels}
+                    total={this.state.total}
+                    changeStat={this.handleChangeStat}
+                />
+                <div className={Styles.statTotal}>
+                    <p>Всего: </p>
+                    <p>{total}</p>
+                </div>
+            </div >
+        )
+    }
+}
 
 export default Statistic;
