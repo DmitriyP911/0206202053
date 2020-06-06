@@ -11,6 +11,8 @@ export default class Profile extends Component {
         allComments: [],
         comment: "",
         userName: "",
+        like: false,
+        likesNumber: 131
     }
 
     handleAddComment = ( e ) => {
@@ -44,6 +46,24 @@ export default class Profile extends Component {
         }
     }
 
+    handleAddLike = ( e ) => {
+        if( this.state.like === false ) {
+            this.setState( ( prevState ) => {
+                return {
+                    like: true,
+                    likesNumber: prevState.likesNumber + 1
+                }
+            } )
+        } else if( this.state.like === true ) {
+            this.setState( ( prevState ) => {
+                return {
+                    like: false,
+                    likesNumber: prevState.likesNumber - 1
+                }
+            } )
+        }
+    }
+
     deleteComment = ( id ) => {
         this.setState( prevState => ( {
             allComments: prevState.allComments.filter( comment => comment.id !== id )
@@ -64,7 +84,7 @@ export default class Profile extends Component {
     }
 
     render () {
-        const { reserve, tours, hotels, total, comment, allComments } = this.state;
+        const { reserve, tours, hotels, total, comment, allComments, like, likesNumber } = this.state;
         return (
             <main className={Styles.mainWrap}>
                 <header className={Styles.header}>
@@ -89,12 +109,12 @@ export default class Profile extends Component {
                         <button className={Styles.allComments}>Все отзывы</button>
                     </div>
                     <div className={Styles.svgBtnsWrap}>
-                        <button className={Styles.likeBtn}>
+                        <button onClick={this.handleAddLike} className={Styles.likeBtn}>
                             <svg enableBackground="new 0 0 32 32" height="14px" id="Layer_1" version="1.1" viewBox="0 0 32 32" width="14px" space="preserve" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
-                                <path className={Styles.commentBtnSvg} d="M22.229,4.514c-2.547,0-4.85,1.334-5.919,3.414c-1.07-2.079-3.401-3.414-5.948-3.414  c-3.981,0-9.319,3.209-6.888,11.963C6.251,25.034,16.31,30.065,16.31,30.063c0,0.002,10.044-5.029,12.821-13.586  C31.562,7.723,26.209,4.514,22.229,4.514z" />
+                                <path className={!like ? Styles.likeBtnSvg : Styles.likeBtnOn} d="M22.229,4.514c-2.547,0-4.85,1.334-5.919,3.414c-1.07-2.079-3.401-3.414-5.948-3.414  c-3.981,0-9.319,3.209-6.888,11.963C6.251,25.034,16.31,30.065,16.31,30.063c0,0.002,10.044-5.029,12.821-13.586  C31.562,7.723,26.209,4.514,22.229,4.514z" />
                             </svg>
                         </button>
-                        <p>131</p>
+                        <p>{likesNumber}</p>
                         <button className={Styles.commentBtn}>
                             <svg enableBackground="new 0 0 32 32" height="14px" id="svg2" version="1.1" viewBox="0 0 32 32" width="14px" id="background">
                                 <g>

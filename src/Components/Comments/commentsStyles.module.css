@@ -23,6 +23,7 @@
     margin: 0 auto;
     width: 80%;
     outline: none;
+    resize: none;
 }
 
 .commentsForm {

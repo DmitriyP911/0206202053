@@ -96,11 +96,19 @@ body {
     width: 100px;
 }
 
-.commentBtnSvg {
+.likeBtnSvg {
     fill: grey;
 }
 
-.commentBtnSvg:hover {
+.likeBtnSvg:hover {
+    fill: red
+}
+
+.likeBtnOn {
+    border: none;
+    background-color: white;
+    outline: none;
+    cursor: pointer;
     fill: red
 }
 
